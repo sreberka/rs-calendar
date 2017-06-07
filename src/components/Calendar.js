@@ -51,9 +51,30 @@ class Calendar extends React.Component {
 
     return (
     <div>
-        <Month dateMonth={this.state.month} dateYear={this.state.year} />
-        <button onClick={this.prevMonth}>Previous Month</button>
-        <button onClick={this.nextMonth}>Next Month</button>
+      <div className="month">
+        <button className="fa fa-chevron-left" onClick={this.prevMonth}>Previous Month</button>
+        <Month dateMonth={this.D.getMonth()} dateYear={this.D.getFullYear()} />
+        <button className="fa fa-chevron-right" onClick={this.nextMonth}>Next Month</button>
+        <style jsx>{`
+          .month{
+            margin-top: 30px;
+            text-align: right;
+          }
+          .month button{
+            border: none;
+            background: transparent;
+            font-size: 0;
+          }
+          .month button:before{
+            font-size: 20px;
+            cursor: pointer;
+          }
+          .month button:hover{
+            opacity: 0.5;
+          }
+        `}
+        </style>
+      </div>
         <Week />
       <div className="calendar">
         {this.renderEmptyItems()}

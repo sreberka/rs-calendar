@@ -6,23 +6,20 @@ class Month extends React.Component {
     this.monthDays = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   }
   render(){
-    return <div className="month">
-      <span id="month">{this.monthDays[this.props.dateMonth]} <strong>{this.props.dateYear}</strong></span>
+    return <span id="month">{this.monthDays[this.props.dateMonth]} <strong>{this.props.dateYear}</strong>
       <style jsx>{`
-          .month{
-            margin-top: 30px;
-            text-align: right;
-          }
-          .month span{
+         span{
+            display: inline-block;
+            margin: 0 15px;
             font-size: 25px;
             font-weight: 400;
           }
-          .month strong{
-          font-weight: 700;
+          strong{
+            font-weight: 700;
           }
-        `}
-      </style>
-    </div>;
+    `}</style>
+    </span>
+
   }
 }
 

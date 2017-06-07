@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>RSS Calendar</title>
-  <link href="css/style.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Cuprum:400,700" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>RSS Calendar</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cuprum:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 <header>
@@ -13,39 +17,9 @@
   </div>
 </header>
 <section>
-  <div class="wrapper" id="calendar-container">
+  <div class="wrapper">
     <h1>The Rolling Scopes School Calendar</h1>
-    <div id="calendar2" class="calendar">
-      <div id="week-days-name">
-        <span id="left">prev</span>
-        <h2></h2>
-        <span id="right">next</span>
-      </div>
-
-      <div class="week week-header">
-        <div class="item">
-          <p class="day-name">Monday</p>
-        </div>
-        <div class="item">
-          <p class="day-name">Tuesday</p>
-        </div>
-        <div class="item">
-          <p class="day-name">Wednesday</p>
-        </div>
-        <div class="item">
-          <p class="day-name">Thursday</p>
-        </div>
-        <div class="item">
-          <p class="day-name">Friday</p>
-        </div>
-        <div class="item">
-          <p class="day-name">Saturday</p>
-        </div>
-        <div class="item">
-          <p class="day-name">Sunday</p>
-        </div>
-      </div>
-    </div>
+    <div id="root" class="calendar-container"></div>
   </div>
 </section>
 <footer>
@@ -53,6 +27,6 @@
     <a class="footer-logo" href="https://rollingscopes.com/"><img src="images/logo_rs2.svg"></a>
   </div>
 </footer>
-<script src="src/app.js"></script>
+<script src="dist/bundle.js"></script>
 </body>
 </html>

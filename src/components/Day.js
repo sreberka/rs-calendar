@@ -1,4 +1,5 @@
 import React from 'react';
+import Lection from './Lection'
 
 class Day extends React.Component {
   constructor(props) {
@@ -7,9 +8,11 @@ class Day extends React.Component {
 
   render() {
     return <div className={'item ' + (this.props.name === new Date().getDate() &&
-    this.props.yearNow === new Date().getFullYear() &&
-    this.props.monthNow === new Date().getMonth() ? 'today' : (this.props.name === '') ? 'empty' : '')}>
+                                      this.props.yearNow === new Date().getFullYear() &&
+                                      this.props.monthNow === new Date().getMonth()
+                                      ? 'today' : (this.props.name === '') ? 'empty' : '')}>
       <p>{this.props.name}</p>
+      <Lection />
       <style jsx>{`
           .item{
             position: relative;
@@ -20,9 +23,12 @@ class Day extends React.Component {
             margin: 0.5%;
             padding: 1rem;
             font-size: 2rem;
+            text-align: center;
           }
           .today{
             color: red;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
           }
           .empty{
             background: transparent;
