@@ -18,14 +18,40 @@ const request = function request() {
   xhr.open('GET', 'http://128.199.53.150/events', true);
   xhr.onload = function () {
     obj = JSON.parse(this.responseText);
-    console.log(obj[0]);
+
   };
   xhr.onerror = function () {
     document.write('error ' + this.status);
   };
   xhr.send();
 
-  return obj;
+  console.log(obj[0]);
 };
 
 request();
+
+function httpGet(url) {
+
+  return new Promise(function(resolve, reject) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+
+    xhr.onload = function() {
+      if (this.status == 200) {
+        resolve(this.response);
+      } else {
+        var error = new Error(this.statusText);
+        error.code = this.status;
+        reject(error);
+      }
+    };
+
+    xhr.onerror = function() {
+      reject(new Error("Network Error"));
+    };
+
+    xhr.send();
+  });
+
+}
