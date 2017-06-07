@@ -3,15 +3,20 @@ import Day from './Day';
 import Week from './Week';
 import Month from './Month';
 
+
 class Calendar extends React.Component {
   constructor(props){
     super(props);
     this.empty = [];
     this.items = [];
-    this.Dlast = new Date(this.props.year, this.props.month+1,0).getDate();
-    this.D = new Date(this.props.year,this.props.month,this.Dlast);
-    this.DNfirst = new Date(this.D.getFullYear(),this.D.getMonth(),1).getDay();
+    this.nextMonth = this.nextMonth.bind(this);
+    this.prevMonth = this.prevMonth.bind(this);
+    this.state = {
+      month: new Date().getMonth(),
+      year: new Date().getFullYear()
+    };
   }
+
   renderEmptyItems(){
     if(this.DNfirst != 0){
       this.empty = Array.from({ length: this.DNfirst - 1 }, (v, k) => k+1);
@@ -20,23 +25,44 @@ class Calendar extends React.Component {
       this.empty = Array.from({ length: 6 }, (v, k) => k+1);
     }
   }
+
   renderItems(){
     this.items = Array.from({ length: this.Dlast }, (v, k) => k+1)
   }
 
+  nextMonth(){
+    this.setState({
+      month: this.D.getMonth() + 1,
+      year: this.D.getFullYear()
+    });
+  }
+
+  prevMonth(){
+    this.setState({
+      month: this.D.getMonth() - 1,
+      year: this.D.getFullYear()
+    });
+  }
+
   render() {
+    this.Dlast = new Date(this.state.year,this.state.month+1,0).getDate();
+    this.D = new Date(this.state.year,this.state.month,this.Dlast);
+    this.DNfirst = new Date(this.D.getFullYear(),this.D.getMonth(),1).getDay();
+
     return (
     <div>
-        <Month date={this.D} />
+        <Month dateMonth={this.state.month} dateYear={this.state.year} />
+        <button onClick={this.prevMonth}>Previous Month</button>
+        <button onClick={this.nextMonth}>Next Month</button>
         <Week />
       <div className="calendar">
         {this.renderEmptyItems()}
         {this.renderItems()}
         {this.empty.map((index) => (
-          <Day key={index} name = '' monthNow = {this.props.month} yearNow = {this.props.year} />
+          <Day key={index} name = '' monthNow = {this.state.month} yearNow = {this.state.year} />
         ))}
         {this.items.map((index) => (
-          <Day key={index} name = {index} monthNow = {this.props.month} yearNow = {this.props.year} />
+          <Day key={index} name = {index} monthNow = {this.state.month} yearNow = {this.state.year} />
         ))}
 
         <style jsx>{`

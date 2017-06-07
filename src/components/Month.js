@@ -7,7 +7,7 @@ class Month extends React.Component {
   }
   render(){
     return <div className="month">
-      <span id="month">{this.monthDays[this.props.date.getMonth()]} <strong>{this.props.date.getFullYear()}</strong></span>
+      <span id="month">{this.monthDays[this.props.dateMonth]} <strong>{this.props.dateYear}</strong></span>
       <style jsx>{`
           .month{
             margin-top: 30px;

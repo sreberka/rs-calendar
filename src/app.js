@@ -1,3 +1,6 @@
+var monthD =  new Date().getMonth();
+var yearD = new Date().getFullYear();
+
 function Calendar(id, year, month) {
   var Dlast = new Date(year,month+1,0).getDate();
   var D = new Date(year,month,Dlast);
@@ -23,18 +26,23 @@ function Calendar(id, year, month) {
     // }
   }
   document.querySelector(id).innerHTML = mnth[D.getMonth()] +' '+ D.getFullYear();
-  document.querySelector(id).dataset.month = D.getMonth();
-  document.querySelector(id).dataset.year = D.getFullYear();
+  // document.querySelector(id).dataset.month = D.getMonth();
+  // document.querySelector(id).dataset.year = D.getFullYear();
 
-  console.log(D)
+  monthD = D.getMonth();
+  yearD = D.getFullYear();
+
+  console.log('DLast: ' + Dlast);
+  console.log('D: ' + D);
+  console.log('DFirst : ' + DNfirst);
 
 }
-Calendar("h2", new Date().getFullYear(), new Date().getMonth());
+Calendar("h2", yearD, monthD);
 document.querySelector('#left').onclick = function() {
   document.querySelector('#calendar-container').removeChild(document.querySelector('#my-calendar'));
-  Calendar("h2", document.querySelector('h2').dataset.year, parseFloat(document.querySelector('h2').dataset.month)-1);
+  Calendar("h2", yearD, parseFloat(monthD)-1);
 };
 document.querySelector('#right').onclick = function() {
   document.querySelector('#calendar-container').removeChild(document.querySelector('#my-calendar'));
-  Calendar("h2", document.querySelector('h2').dataset.year, parseFloat(document.querySelector('h2').dataset.month)+1);
+  Calendar("h2", yearD, parseFloat(monthD)+1);
 };
