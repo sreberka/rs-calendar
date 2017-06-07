@@ -1,16 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
-import Calendar from './components/Calendar';
-
-
-
-ReactDOM.render(
-  <Calendar />,
-  document.getElementById('root')
-);
-
-
 const request = function request() {
   let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
   let xhr = new XHR();
@@ -28,4 +15,5 @@ const request = function request() {
   return obj;
 };
 
-request();
+
+export default request();

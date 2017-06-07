@@ -1,5 +1,4 @@
 import React from 'react';
-import Lection from './Lection'
 
 class Day extends React.Component {
   constructor(props) {
@@ -12,7 +11,6 @@ class Day extends React.Component {
                                       this.props.monthNow === new Date().getMonth()
                                       ? 'today' : (this.props.name === '') ? 'empty' : '')}>
       <p>{this.props.name}</p>
-      <Lection />
       <style jsx>{`
           .item{
             position: relative;
