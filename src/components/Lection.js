@@ -5,7 +5,7 @@ class Lection extends React.Component {
     super(props);
   }
   render(){
-    return <button>{this.props.text}
+    return <button>{this.props.name}
       <style jsx>{`
           button{
             width: 100%;

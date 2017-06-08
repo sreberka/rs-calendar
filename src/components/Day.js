@@ -1,25 +1,40 @@
 import React from 'react';
 import Lection from './Lection'
-import makeRequest from '../request'
+import makeRequest from '../request';
 
 
-let req = makeRequest('http://128.199.53.150/events').then(function(defs){
-    console.log(defs)
-});
+// let req = makeRequest('http://128.199.53.150/events').then(function(defs){
+//     console.log(defs)
+// });
 
 class Day extends React.Component {
   constructor(props) {
     super(props);
+    this.request = this.request.bind(this);
+    this.state = {
+      name: ''
+    }
+  }
 
+  request(){
+    let r = makeRequest('http://128.199.53.150/events').then(function(defs){
+      console.log(defs);
+      this.setState({
+        name: defs
+      })
+    });
   }
 
   render() {
+
     return <div className={'item ' + (this.props.name === new Date().getDate() &&
                                       this.props.yearNow === new Date().getFullYear() &&
                                       this.props.monthNow === new Date().getMonth()
                                       ? 'today' : (this.props.name === '') ? 'empty' : '')}>
       <p>{this.props.name}</p>
-      <Lection text = "time" />
+      {this.request('http://128.199.53.150/events')}
+      <Lection name = {this.state.name} text = "time" />
+
       <style jsx>{`
           .item{
             position: relative;
