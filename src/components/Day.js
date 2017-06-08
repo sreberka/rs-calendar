@@ -21,15 +21,15 @@ class Day extends React.Component {
     makeRequest('http://128.199.53.150/events').then(function(defs){
       that.setState({
         name: defs
-      })
+      });
+      let obj = that.state.name;
+      //this.request();
+      console.log(obj);
     });
   }
 
   render() {
-    let obj = this.state.name;
-    //this.request();
 
-    console.log(obj);
     //console.log(this.state.name);
     return <div className={'item ' + (this.props.name === new Date().getDate() &&
                                       this.props.yearNow === new Date().getFullYear() &&
