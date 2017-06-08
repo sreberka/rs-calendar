@@ -32,7 +32,7 @@ class Day extends React.Component {
                                       this.props.monthNow === new Date().getMonth()
                                       ? 'today' : (this.props.name === '') ? 'empty' : '')}>
       <p>{this.props.name}</p>
-      {this.request('http://128.199.53.150/events')}
+      {this.request()}
       <Lection name = {this.state.name} text = "time" />
 
       <style jsx>{`
