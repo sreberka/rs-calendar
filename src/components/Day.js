@@ -12,28 +12,32 @@ class Day extends React.Component {
     super(props);
     this.request = this.request.bind(this);
     this.state = {
-      name: ''
+      name: []
     }
   }
 
   request(){
-    let r = makeRequest('http://128.199.53.150/events').then(function(defs){
-      console.log(defs);
-      this.setState({
+    const that = this;
+    makeRequest('http://128.199.53.150/events').then(function(defs){
+      that.setState({
         name: defs
       })
     });
   }
 
   render() {
+    let obj = this.state.name;
+    //this.request();
 
+    console.log(obj);
+    //console.log(this.state.name);
     return <div className={'item ' + (this.props.name === new Date().getDate() &&
                                       this.props.yearNow === new Date().getFullYear() &&
                                       this.props.monthNow === new Date().getMonth()
                                       ? 'today' : (this.props.name === '') ? 'empty' : '')}>
       <p>{this.props.name}</p>
-      {this.request()}
-      <Lection name = {this.state.name} text = "time" />
+      <button onClick={this.request}>Click</button>
+      <Lection text = "time" />
 
       <style jsx>{`
           .item{
