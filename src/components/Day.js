@@ -1,8 +1,16 @@
 import React from 'react';
+import Lection from './Lection'
+import makeRequest from '../request'
+
+
+let req = makeRequest('http://128.199.53.150/events').then(function(defs){
+    console.log(defs)
+});
 
 class Day extends React.Component {
   constructor(props) {
     super(props);
+
   }
 
   render() {
@@ -11,6 +19,7 @@ class Day extends React.Component {
                                       this.props.monthNow === new Date().getMonth()
                                       ? 'today' : (this.props.name === '') ? 'empty' : '')}>
       <p>{this.props.name}</p>
+      <Lection text = "time" />
       <style jsx>{`
           .item{
             position: relative;

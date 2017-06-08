@@ -1,19 +1,12 @@
-const request = function request() {
-  let XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
-  let xhr = new XHR();
-  let obj = {};
-  xhr.open('GET', 'http://128.199.53.150/events', true);
-  xhr.onload = function () {
-    obj = JSON.parse(this.responseText);
-    console.log(obj[0]);
-  };
-  xhr.onerror = function () {
-    document.write('error ' + this.status);
-  };
-  xhr.send();
-
+const makeRequest = function (URL) {
+  let obj = fetch(URL, {mode: 'cors'})
+      .then((res) => {
+        return res.json();
+      })
+      .catch((error) => {
+        throw new Error('Error with fetch');
+      });
   return obj;
 };
 
-
-export default request();
+export default makeRequest
