@@ -27,8 +27,6 @@ class Calendar extends React.Component {
       that.setState({
         requestObj: defs
       });
-      let obj = that.state.requestObj;
-      return obj;
     });
   }
 
