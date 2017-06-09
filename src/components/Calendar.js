@@ -2,6 +2,7 @@ import React from 'react';
 import Day from './Day';
 import Week from './Week';
 import Month from './Month';
+import makeRequest from '../request';
 
 
 class Calendar extends React.Component {
@@ -11,10 +12,24 @@ class Calendar extends React.Component {
     this.items = [];
     this.nextMonth = this.nextMonth.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
+    this.request = this.request.bind(this);
     this.state = {
       month: new Date().getMonth(),
-      year: new Date().getFullYear()
+      year: new Date().getFullYear(),
+      requestObj: []
     };
+   
+  }
+
+  request(){
+    const that = this;
+    makeRequest('http://128.199.53.150/events').then(function(defs){
+      that.setState({
+        requestObj: defs
+      });
+      let obj = that.state.requestObj;
+      return obj;
+    });
   }
 
   renderEmptyItems(){
@@ -45,10 +60,11 @@ class Calendar extends React.Component {
   }
 
   render() {
+    this.request();
+    console.log(this.state.requestObj);
     this.Dlast = new Date(this.state.year,this.state.month+1,0).getDate();
     this.D = new Date(this.state.year,this.state.month,this.Dlast);
     this.DNfirst = new Date(this.D.getFullYear(),this.D.getMonth(),1).getDay();
-
     return (
     <div>
       <div className="month">
@@ -83,7 +99,7 @@ class Calendar extends React.Component {
           <Day key={index} name = '' monthNow = {this.state.month} yearNow = {this.state.year} />
         ))}
         {this.items.map((index) => (
-          <Day key={index} name = {index} monthNow = {this.state.month} yearNow = {this.state.year} />
+          <Day event = {this.state.requestObj} date={this.state.year + '-' + (this.state.month + 1 < 10 ? '0' + (this.state.month + 1) : this.state.month + 1) + '-' + index} key={index} name = {index} monthNow = {this.state.month} yearNow = {this.state.year} />
         ))}
 
         <style jsx>{`

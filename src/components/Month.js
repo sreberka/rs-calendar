@@ -13,6 +13,8 @@ class Month extends React.Component {
             margin: 0 15px;
             font-size: 25px;
             font-weight: 400;
+            min-width: 160px;
+            text-align: center;
           }
           strong{
             font-weight: 700;

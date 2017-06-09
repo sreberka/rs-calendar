@@ -9,7 +9,7 @@ class Week extends React.Component {
   render(){
     return <div className="week">
       {this.weekDays.map((index) => (
-        <Day key={index} name = {index} />
+        <Day isWeek = {true} key={index} name = {index} />
       ))}
       <style jsx>{`
           .week{

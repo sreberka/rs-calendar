@@ -4,7 +4,6 @@ import { render } from 'react-dom';
 import Calendar from './components/Calendar';
 
 
-
 ReactDOM.render(
         <Calendar />,
   document.getElementById('root')
@@ -66,3 +65,6 @@ ReactDOM.render(
 // };
 //
 // makeRequest('http://128.199.53.150/events');
+
+
+
