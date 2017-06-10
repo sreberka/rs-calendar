@@ -2,7 +2,6 @@ import React from 'react';
 import Day from './Day';
 import Week from './Week';
 import Month from './Month';
-import makeRequest from '../request';
 
 
 class Calendar extends React.Component {
@@ -12,22 +11,12 @@ class Calendar extends React.Component {
     this.items = [];
     this.nextMonth = this.nextMonth.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
-    this.request = this.request.bind(this);
+
     this.state = {
       month: new Date().getMonth(),
-      year: new Date().getFullYear(),
-      requestObj: []
+      year: new Date().getFullYear()
     };
-   
-  }
 
-  request(){
-    const that = this;
-    makeRequest('http://128.199.53.150/events').then(function(defs){
-      that.setState({
-        requestObj: defs
-      });
-    });
   }
 
   renderEmptyItems(){
@@ -58,11 +47,10 @@ class Calendar extends React.Component {
   }
 
   render() {
-    this.request();
-    console.log(this.state.requestObj);
     this.Dlast = new Date(this.state.year,this.state.month+1,0).getDate();
     this.D = new Date(this.state.year,this.state.month,this.Dlast);
     this.DNfirst = new Date(this.D.getFullYear(),this.D.getMonth(),1).getDay();
+    //console.log(this.props.trainers);
     return (
     <div>
       <div className="month">
@@ -71,7 +59,6 @@ class Calendar extends React.Component {
         <button className="fa fa-chevron-right" onClick={this.nextMonth}>Next Month</button>
         <style jsx>{`
           .month{
-            margin-top: 30px;
             text-align: right;
           }
           .month button{
@@ -80,7 +67,7 @@ class Calendar extends React.Component {
             font-size: 0;
           }
           .month button:before{
-            font-size: 20px;
+            font-size: 2rem;
             cursor: pointer;
           }
           .month button:hover{
@@ -94,10 +81,10 @@ class Calendar extends React.Component {
         {this.renderEmptyItems()}
         {this.renderItems()}
         {this.empty.map((index) => (
-          <Day key={index} name = '' monthNow = {this.state.month} yearNow = {this.state.year} />
+          <Day trainer = {this.props.trainers} event = {this.props.events} key={index} name = '' monthNow = {this.state.month} yearNow = {this.state.year} />
         ))}
         {this.items.map((index) => (
-          <Day event = {this.state.requestObj} date={this.state.year + '-' + (this.state.month + 1 < 10 ? '0' + (this.state.month + 1) : this.state.month + 1) + '-' + index} key={index} name = {index} monthNow = {this.state.month} yearNow = {this.state.year} />
+          <Day trainer = {this.props.trainers} event = {this.props.events} date={this.state.year + '-' + (this.state.month + 1 < 10 ? '0' + (this.state.month + 1) : this.state.month + 1) + '-' + index} key={index} name = {index} monthNow = {this.state.month} yearNow = {this.state.year} />
         ))}
 
         <style jsx>{`

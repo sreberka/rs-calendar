@@ -10,8 +10,8 @@ class Month extends React.Component {
       <style jsx>{`
          span{
             display: inline-block;
-            margin: 0 15px;
-            font-size: 25px;
+            margin: 0 1.5rem;
+            font-size: 2.5rem;
             font-weight: 400;
             min-width: 160px;
             text-align: center;
