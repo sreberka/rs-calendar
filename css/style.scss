@@ -118,6 +118,11 @@ h1{
       background: #f44336;
     }
   }
+  .workshop{
+    &:before{
+      background: #9575cd;
+    }
+  }
 }
 /************************ header *************************/
 header{

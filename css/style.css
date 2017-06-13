@@ -76,6 +76,8 @@ h1 {
     background: #ffa726; }
   .events-colors .deadline:before {
     background: #f44336; }
+  .events-colors .workshop:before {
+    background: #9575cd; }
 
 /************************ header *************************/
 header {

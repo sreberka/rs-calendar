@@ -31,7 +31,7 @@ class EventInfo extends React.Component {
       {this.props.eventResources.map(index => <div className="resource-description" key={index.description}>
         <p><strong>Type: </strong>{index.type}</p>
         <p><strong>Description: </strong>{index.description}</p>
-        <p><strong>Resource: </strong>{index.resource}</p>
+        <p><strong>Resource: </strong><a href={index.resource} target="_blank">{index.resource}</a></p>
       </div>)}
       <style jsx>{`
           h2{

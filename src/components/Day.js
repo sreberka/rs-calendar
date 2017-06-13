@@ -10,24 +10,27 @@ class Day extends React.Component {
   render() {
     let obj = this.props.event;
     let filter = obj.filter(item => item.start.slice(0,10) === this.props.date);
-    if(filter.length === 1){
+    if(filter.length > 0){
       //console.log(filter[0]);
       return <div className={'item ' + (this.props.name === new Date().getDate() &&
       this.props.yearNow === new Date().getFullYear() &&
       this.props.monthNow === new Date().getMonth()
         ? 'today' : (this.props.name === '') ? 'empty' : '')}>
         <p>{this.props.name}</p>
-        <Event type = {filter[0].type}
-               time = {filter[0].start.slice(11).slice(0,5)}
-               title = {filter[0].title}
-               date = {filter[0].start}
-               description = {filter[0].description}
-               duration = {filter[0].duration}
-               location = {filter[0].location}
-               speakers = {filter[0].speakers}
-               resources = {filter[0].resources}
-               trainers = {this.props.trainer}
-        />
+        {filter.map((index) => (
+          <Event type = {index.type}
+                 time = {index.start.slice(11).slice(0,5)}
+                 title = {index.title}
+                 date = {index.start}
+                 description = {index.description}
+                 duration = {index.duration}
+                 location = {index.location}
+                 speakers = {index.speakers}
+                 resources = {index.resources}
+                 trainers = {this.props.trainer}
+          />
+        ))}
+
         <style jsx>{`
           .item{
             width: 13.25%;

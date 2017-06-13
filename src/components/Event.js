@@ -34,7 +34,7 @@ class Event extends React.Component {
   }
 
   render(){
-    return <div><button onClick={this._handleClick} className={(this.props.type === "lecture") ? 'lecture' : (this.props.type === "deadline") ? 'deadLine' : (this.props.type === "webinar") ? 'webinar' : 'event'} >{this.props.time}
+    return <div><button onClick={this._handleClick} className={(this.props.type === "lecture") ? 'lecture' : (this.props.type === "deadline") ? 'deadLine' : (this.props.type === "webinar") ? 'webinar' : (this.props.type === "event") ? 'event' : 'workshop'} >{this.props.time}
       <style jsx>{`
           button{
             width: 100%;
@@ -76,7 +76,12 @@ class Event extends React.Component {
           .event:hover{
             background: #f57c00;
           }
-
+          .workshop{
+            background: #9575cd;
+          }
+          .workshop:hover{
+            background: #5e35b1;
+          }
         `}
       </style>
     </button>
