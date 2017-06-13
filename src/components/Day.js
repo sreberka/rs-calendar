@@ -18,7 +18,7 @@ class Day extends React.Component {
         ? 'today' : (this.props.name === '') ? 'empty' : '')}>
         <p>{this.props.name}</p>
         {filter.map((index) => (
-          <Event type = {index.type}
+          <Event key={index.title} type = {index.type}
                  time = {index.start.slice(11).slice(0,5)}
                  title = {index.title}
                  date = {index.start}
