@@ -1,3 +1,4 @@
 # rs-calendar
 
-http://piano-tuner-boar-24145.bitballoon.com/
+http://poet-rodney-73260.bitballoon.com/
+http://sreberka.github.io/rs-calendar/
