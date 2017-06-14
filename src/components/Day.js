@@ -9,9 +9,10 @@ class Day extends React.Component {
 
   render() {
     let obj = this.props.event;
+    let events = [];
+    obj.map(item=> events.push(item.start.slice(0,10)));
     let filter = obj.filter(item => item.start.slice(0,10) === this.props.date);
     if(filter.length > 0){
-      //console.log(filter[0]);
       return <div className={'item ' + (this.props.name === new Date().getDate() &&
       this.props.yearNow === new Date().getFullYear() &&
       this.props.monthNow === new Date().getMonth()

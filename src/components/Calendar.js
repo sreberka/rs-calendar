@@ -84,7 +84,13 @@ class Calendar extends React.Component {
           <Day trainer = {this.props.trainers} event = {this.props.events} key={index} name = '' monthNow = {this.state.month} yearNow = {this.state.year} />
         ))}
         {this.items.map((index) => (
-          <Day trainer = {this.props.trainers} event = {this.props.events} date={this.state.year + '-' + (this.state.month + 1 < 10 ? '0' + (this.state.month + 1) : this.state.month + 1) + '-' + index} key={index} name = {index} monthNow = {this.state.month} yearNow = {this.state.year} />
+          <Day trainer = {this.props.trainers} 
+               event = {this.props.events} 
+               date={this.state.year + '-' + (this.state.month + 1 < 10 ? '0' + (this.state.month + 1) : this.state.month + 1) + '-' + (index < 10 ? '0' + index : index)} 
+               key={index} 
+               name = {index} 
+               monthNow = {this.state.month}
+               yearNow = {this.state.year} />
         ))}
 
         <style jsx>{`
