@@ -62,6 +62,7 @@ class EventInfo extends React.Component {
             max-height: 75%;
             padding: 2rem;
             text-align: left;
+            color: #333;
             border: 1px solid #252525;
             background: #fff;
             overflow: auto;
