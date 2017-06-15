@@ -1,4 +1,4 @@
 # rs-calendar
 
-http://steward-tony-80076.bitballoon.com/<br/>
+http://glass-maker-hamster-81732.bitballoon.com/<br/>
 http://sreberka.github.io/rs-calendar/
